@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EventHub | Delete Event</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#F8F4ED;color:#352B2B;min-height:100vh}
+a{text-decoration:none;color:inherit}
+.nav{height:75px;background:#351522;display:flex;align-items:center;justify-content:space-between;padding:0 7%;color:white}
+.logo{font:700 28px 'Playfair Display',serif}
+.logo span{color:#E5C9A8}
+.nav a:last-child{color:#E5C9A8;font-size:11px}
+.container{max-width:620px;margin:100px auto;padding:22px}
+.card{background:white;border:1px solid #E7DED3;padding:45px;text-align:center;box-shadow:0 15px 40px #3515220B}
+.icon{width:65px;height:65px;margin:0 auto 22px;display:grid;place-items:center;background:#F8EAE5;color:#A34D50;font-size:28px;border-radius:50%}
+h1{font:600 33px 'Playfair Display',serif;color:#351522;margin-bottom:15px}
+p{color:#837773;font-size:13px;line-height:1.8}
+.event-name{margin:25px 0;padding:18px;background:#F8F4ED;color:#60464B;font-weight:800}
+.actions{display:flex;justify-content:center;gap:13px;margin-top:28px;flex-wrap:wrap}
+.btn{display:inline-block;padding:14px 22px;font-size:10px;font-weight:800;letter-spacing:1px;border:0;cursor:pointer}
+.cancel{background:#F1EAE1;color:#60464B}
+.delete{background:#9B3F49;color:white}
+.delete:hover{background:#7D2835}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+<a href="/" class="logo">Event<span>Hub.</span></a>
+<a href="/dashboard/">← DASHBOARD</a>
+</nav>
+
+<main class="container">
+<div class="card">
+<div class="icon">!</div>
+<h1>Delete Event?</h1>
+<p>You are about to permanently remove this event.</p>
+
+<div class="event-name">{{ event.name }}</div>
+
+<p>This action cannot be undone. Are you sure?</p>
+
+<form method="POST">
+{% csrf_token %}
+<div class="actions">
+<a href="/dashboard/" class="btn cancel">CANCEL</a>
+<button type="submit" class="btn delete">YES, DELETE EVENT</button>
+</div>
+</form>
+</div>
+</main>
+
+</body>
+</html>
